@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:foxusify/screens/login_screen/login_screen.dart';
+import 'package:foxusify/screens/main_screen/main_screen.dart';
+import 'package:foxusify/widgets/rounded_navbar.dart';
 import 'l10n/app_localizations.dart';
 
 import 'screens/login_screen/splash_screen.dart';
@@ -39,7 +42,7 @@ class MyApp extends StatelessWidget {
         return supportedLocales.first; // eşleşmezse ilkini kullan
       },
 
-      home: const SplashScreen(),
+      home: LoginScreen(),
     );
   }
 }

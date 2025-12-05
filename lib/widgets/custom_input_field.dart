@@ -6,13 +6,14 @@ class CustomInputField extends StatelessWidget {
   final IconData icon;
   final bool isPassword;
   final TextInputType keyboardType;
-
+  final void Function(String)? onChanged;
   const CustomInputField({
     super.key,
     required this.hintText,
     required this.icon,
     this.isPassword = false,
     this.keyboardType = TextInputType.text,
+    this.onChanged,
   });
 
   @override
@@ -33,6 +34,7 @@ class CustomInputField extends StatelessWidget {
       child: TextField(
         obscureText: isPassword,
         keyboardType: keyboardType,
+        onChanged: onChanged,
         decoration: InputDecoration(
           prefixIcon: Icon(icon, color: AppColors.textLight),
           hintText: hintText,
