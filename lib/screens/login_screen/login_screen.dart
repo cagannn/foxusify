@@ -9,7 +9,7 @@ import 'signup_screen.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
-  final String Merhaba = "Merhaba!a";
+  final String Merhaba = "Merhaba!";
   @override
   Widget build(BuildContext context) {
     return AuthTemplate(
