@@ -26,7 +26,7 @@ class AuthTemplate extends StatelessWidget {
               top: size.height * logoTopPosition,
               left: 0,
               right: 0,
-              child: const Center(child: AppLogo()),
+              child: const Center(child: AppLogo(size: 150)),
             ),
 
             Positioned(

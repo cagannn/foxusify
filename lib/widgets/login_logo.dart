@@ -12,14 +12,14 @@ class AppLogo extends StatelessWidget {
     return Container(
       width: size,
       height: size,
+
       decoration: const BoxDecoration(
         color: AppColors.white,
         shape: BoxShape.circle,
-      ),
-      child: Icon(
-        Icons.incomplete_circle,
-        size: iconSize,
-        color: AppColors.darkOrange,
+        image: DecorationImage(
+          image: AssetImage('assets/images/logo.png'),
+          fit: BoxFit.cover,
+        ),
       ),
     );
   }

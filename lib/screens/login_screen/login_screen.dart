@@ -9,7 +9,7 @@ import 'signup_screen.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
-
+  final String Merhaba = "Merhaba!a";
   @override
   Widget build(BuildContext context) {
     return AuthTemplate(
@@ -17,7 +17,7 @@ class LoginScreen extends StatelessWidget {
       formContent: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          const Text("Hola!", style: AppTextStyles.header),
+          Text(Merhaba, style: AppTextStyles.header),
           const SizedBox(height: 8),
           const Text(
             "Please login to your account.",
@@ -26,18 +26,23 @@ class LoginScreen extends StatelessWidget {
           const SizedBox(height: 40),
 
           const CustomInputField(
-              hintText: "Email Address", icon: Icons.email_outlined),
+            hintText: "Email Address",
+            icon: Icons.email_outlined,
+          ),
           const CustomInputField(
-              hintText: "Password",
-              icon: Icons.lock_outline,
-              isPassword: true),
+            hintText: "Password",
+            icon: Icons.lock_outline,
+            isPassword: true,
+          ),
 
           Align(
             alignment: Alignment.centerRight,
             child: TextButton(
               onPressed: () {},
-              child: const Text("Forgot Password?",
-                  style: TextStyle(color: AppColors.textLight)),
+              child: const Text(
+                "Forgot Password?",
+                style: TextStyle(color: AppColors.textLight),
+              ),
             ),
           ),
 
