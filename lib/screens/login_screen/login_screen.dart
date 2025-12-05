@@ -5,32 +5,27 @@ import '../../widgets/auth_template.dart';
 import '../../widgets/custom_input_field.dart';
 import '../../widgets/action_button.dart';
 import '../../widgets/social_login_section.dart';
-import 'signup_screen.dart';
+import '../signup_screen/signup_screen.dart';
+import '../../l10n/app_localizations.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
-  final String Merhaba = "Merhaba!";
   @override
   Widget build(BuildContext context) {
+    final loc = AppLocalizations.of(context)!;
     return AuthTemplate(
       logoTopPosition: 0.12,
       formContent: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Text(Merhaba, style: AppTextStyles.header),
+          Text(loc.hello, style: AppTextStyles.header),
           const SizedBox(height: 8),
-          const Text(
-            "Please login to your account.",
-            style: AppTextStyles.subHeader,
-          ),
+          Text(loc.pleaseLogin, style: AppTextStyles.subHeader),
           const SizedBox(height: 40),
 
-          const CustomInputField(
-            hintText: "Email Address",
-            icon: Icons.email_outlined,
-          ),
-          const CustomInputField(
-            hintText: "Password",
+          CustomInputField(hintText: loc.email, icon: Icons.email_outlined),
+          CustomInputField(
+            hintText: loc.password,
             icon: Icons.lock_outline,
             isPassword: true,
           ),
@@ -39,15 +34,15 @@ class LoginScreen extends StatelessWidget {
             alignment: Alignment.centerRight,
             child: TextButton(
               onPressed: () {},
-              child: const Text(
-                "Forgot Password?",
+              child: Text(
+                loc.forgetPass,
                 style: TextStyle(color: AppColors.textLight),
               ),
             ),
           ),
 
           const SizedBox(height: 20),
-          ActionButton(text: "LOGIN", onPressed: () {}),
+          ActionButton(text: loc.login, onPressed: () {}),
           const SizedBox(height: 30),
 
           const SocialLoginSection(),
@@ -58,8 +53,8 @@ class LoginScreen extends StatelessWidget {
               context,
               MaterialPageRoute(builder: (_) => const SignUpScreen()),
             ),
-            child: const Text(
-              "Create new account",
+            child: Text(
+              loc.createAccount,
               style: TextStyle(
                 color: AppColors.darkOrange,
                 decoration: TextDecoration.underline,

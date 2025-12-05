@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:foxusify/l10n/app_localizations.dart';
 import '../../components/colors.dart';
 import '../../components/text_styles.dart';
 import '../../widgets/custom_input_field.dart';
@@ -10,6 +11,7 @@ class SignUpScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final loc = AppLocalizations.of(context)!;
     return Scaffold(
       backgroundColor: AppColors.backgroundYellow,
       body: Stack(
@@ -41,29 +43,33 @@ class SignUpScreen extends StatelessWidget {
               child: SingleChildScrollView(
                 child: Column(
                   children: [
-                    const Text("Sign up", style: AppTextStyles.header),
+                    Text(loc.signup, style: AppTextStyles.header),
                     const SizedBox(height: 5),
-                    const Text("Create a new account",
-                        style: AppTextStyles.subHeader),
+                    Text(loc.createAccount, style: AppTextStyles.subHeader),
                     const SizedBox(height: 30),
 
-                    const CustomInputField(
-                        hintText: "Full name", icon: Icons.person_outline),
-                    const CustomInputField(
-                        hintText: "Email Address",
-                        icon: Icons.email_outlined,
-                        keyboardType: TextInputType.emailAddress),
-                    const CustomInputField(
-                        hintText: "Phone number",
-                        icon: Icons.phone_outlined,
-                        keyboardType: TextInputType.phone),
-                    const CustomInputField(
-                        hintText: "Password",
-                        icon: Icons.lock_outline,
-                        isPassword: true),
+                    CustomInputField(
+                      hintText: loc.username,
+                      icon: Icons.person_outline,
+                    ),
+                    CustomInputField(
+                      hintText: loc.email,
+                      icon: Icons.email_outlined,
+                      keyboardType: TextInputType.emailAddress,
+                    ),
+                    CustomInputField(
+                      hintText: loc.password,
+                      icon: Icons.lock_outline,
+                      isPassword: true,
+                    ),
+                    CustomInputField(
+                      hintText: loc.confirmPass,
+                      icon: Icons.lock_outline,
+                      isPassword: true,
+                    ),
 
                     const SizedBox(height: 20),
-                    ActionButton(text: "CREATE ACCOUNT", onPressed: () {}),
+                    ActionButton(text: loc.createAccount, onPressed: () {}),
 
                     const SizedBox(height: 20),
                     const Text("or", style: TextStyle(color: Colors.grey)),
@@ -72,17 +78,23 @@ class SignUpScreen extends StatelessWidget {
                     const Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        SocialCircleButton(icon: Icons.g_mobiledata, color: Colors.red),
+                        SocialCircleButton(
+                          icon: Icons.g_mobiledata,
+                          color: Colors.red,
+                        ),
                         SizedBox(width: 20),
-                        SocialCircleButton(icon: Icons.facebook, color: Colors.blue),
+                        SocialCircleButton(
+                          icon: Icons.facebook,
+                          color: Colors.blue,
+                        ),
                       ],
                     ),
 
                     const SizedBox(height: 30),
                     GestureDetector(
                       onTap: () => Navigator.pop(context),
-                      child: const Text(
-                        "Login",
+                      child: Text(
+                        loc.login,
                         style: TextStyle(
                           color: AppColors.darkOrange,
                           decoration: TextDecoration.underline,
@@ -93,7 +105,7 @@ class SignUpScreen extends StatelessWidget {
                 ),
               ),
             ),
-          )
+          ),
         ],
       ),
     );

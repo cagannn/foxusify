@@ -1,0 +1,16 @@
+{
+    "@@locale": "en",
+    "appTitle": "Foxusify",
+    "hello": "Hello",
+    "changeLanguage": "Change language",
+    "pleaseLogin": "Please login to your account.",
+    "email": "Email",
+    "password": "Password",
+    "login": "Login",
+    "signup": "Sign Up",
+    "forgetPass": "Forgot Password?",
+    "createAccount": "Create a new account",
+    "username":"Username",
+    "confirmPass":"Confirm Your Password"
+
+}

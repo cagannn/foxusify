@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'l10n/app_localizations.dart';
+
 import 'screens/login_screen/splash_screen.dart';
 
 void main() {
@@ -10,10 +13,33 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: SplashScreen(),
+
+      // Desteklenen diller
+      supportedLocales: const [Locale('en'), Locale('tr')],
+
+      // Lokalizasyon delegeleri
+      localizationsDelegates: const [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+
+      // Cihaz diline göre otomatik seçim
+      localeResolutionCallback: (locale, supportedLocales) {
+        if (locale != null) {
+          for (final supportedLocale in supportedLocales) {
+            if (supportedLocale.languageCode == locale.languageCode) {
+              return supportedLocale;
+            }
+          }
+        }
+        return supportedLocales.first; // eşleşmezse ilkini kullan
+      },
+
+      home: const SplashScreen(),
     );
   }
 }
-

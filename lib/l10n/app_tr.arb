@@ -1,0 +1,15 @@
+{
+    "@@locale": "tr",
+    "appTitle": "Foxusify",
+    "hello": "Merhaba",
+    "changeLanguage": "Dili değiştir",
+    "pleaseLogin": "Lütfen hesabınıza giriş yapın.",
+    "email": "E-posta",
+    "password": "Parola",
+    "login": "Giriş Yap",
+    "signup": "Kayıt Ol",
+    "forgetPass": "Parolanızı mı unuttunuz?",
+    "createAccount": "Yeni Bir Hesap Oluştur",
+    "username":"Kullanıcı Adı",
+    "confirmPass":"Şifrenizi onaylayın"
+}
