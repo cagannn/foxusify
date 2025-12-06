@@ -43,4 +43,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get confirmPass => 'Confirm Your Password';
+
+  @override
+  String get home => 'Home';
+
+  @override
+  String get placement => 'Placement';
+
+  @override
+  String get profile => 'Profile';
 }

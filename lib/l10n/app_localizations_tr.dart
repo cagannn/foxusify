@@ -43,4 +43,13 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get confirmPass => 'Şifrenizi onaylayın';
+
+  @override
+  String get home => 'Ana Sayfa';
+
+  @override
+  String get placement => 'Sıralama';
+
+  @override
+  String get profile => 'Profil';
 }

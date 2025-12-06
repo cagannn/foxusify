@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../l10n/app_localizations.dart';
 
 class RoundedNavBar extends StatelessWidget {
   final int currentIndex;
@@ -13,14 +14,15 @@ class RoundedNavBar extends StatelessWidget {
   static const _orange = Color(0xFFE87C43);
   static const _grey = Color(0xFF8E8E93);
 
-  static const _items = [
-    _NavItemData(icon: Icons.home_outlined, label: 'Home'),
-    _NavItemData(icon: Icons.sort_rounded, label: 'Placement'),
-    _NavItemData(icon: Icons.person_outline, label: 'Profile'),
-  ];
-
   @override
   Widget build(BuildContext context) {
+    final loc = AppLocalizations.of(context)!;
+    final _items = [
+      _NavItemData(icon: Icons.home_outlined, label: loc.home),
+      _NavItemData(icon: Icons.sort_rounded, label: loc.placement),
+      _NavItemData(icon: Icons.person_outline, label: loc.profile),
+    ];
+
     return Container(
       height: 80,
       child: SizedBox(

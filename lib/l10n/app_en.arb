@@ -11,6 +11,8 @@
     "forgetPass": "Forgot Password?",
     "createAccount": "Create a new account",
     "username":"Username",
-    "confirmPass":"Confirm Your Password"
-
+    "confirmPass":"Confirm Your Password",
+    "home":"Home",
+    "placement":"Placement",
+    "profile":"Profile"
 }

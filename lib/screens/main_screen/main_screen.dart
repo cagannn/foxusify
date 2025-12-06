@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:foxusify/screens/login_screen/login_screen.dart';
 import '../../widgets/rounded_navbar.dart';
 
 class MainScreen extends StatefulWidget {

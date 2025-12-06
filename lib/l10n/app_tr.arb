@@ -11,5 +11,8 @@
     "forgetPass": "Parolanızı mı unuttunuz?",
     "createAccount": "Yeni Bir Hesap Oluştur",
     "username":"Kullanıcı Adı",
-    "confirmPass":"Şifrenizi onaylayın"
+    "confirmPass":"Şifrenizi onaylayın",
+    "home":"Ana Sayfa",
+    "placement":"Sıralama",
+    "profile":"Profil"
 }
