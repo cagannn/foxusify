@@ -14,5 +14,6 @@
     "confirmPass":"Confirm Your Password",
     "home":"Home",
     "placement":"Placement",
-    "profile":"Profile"
+    "profile":"Profile",
+    "passwordDoNotMatch":"Confirm password havew to same as your password"
 }

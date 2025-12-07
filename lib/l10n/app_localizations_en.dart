@@ -52,4 +52,8 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get profile => 'Profile';
+
+  @override
+  String get passwordDoNotMatch =>
+      'Confirm password havew to same as your password';
 }
