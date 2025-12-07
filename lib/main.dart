@@ -3,11 +3,13 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'l10n/app_localizations.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'screens/login_screen/splash_screen.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 Future<void> main() async {
+  await dotenv.load(fileName: ".env");
   await Supabase.initialize(
-    url: 'https://svcmmhxjhgvufhwhvgfu.supabase.co',
-    anonKey: 'sb_publishable_sbyVlF8KXWvXmN7neCooHg_JO6q6BEl',
+    url: dotenv.env['SUPABASE_URL']!,
+    anonKey: dotenv.env['SUPABASE_ANON_KEY']!,
   );
   runApp(const MyApp());
 }
