@@ -14,5 +14,6 @@
     "confirmPass":"Şifrenizi onaylayın",
     "home":"Ana Sayfa",
     "placement":"Sıralama",
-    "profile":"Profil"
+    "profile":"Profil",
+    "passwordDoNotMatch":"Girilen şifreler eşleşmiyor"
 }

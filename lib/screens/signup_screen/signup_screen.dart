@@ -5,6 +5,8 @@ import '../../components/text_styles.dart';
 import '../../widgets/custom_input_field.dart';
 import '../../widgets/action_button.dart';
 import '../../widgets/social_circle_button.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:uuid/uuid.dart';
 
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({super.key});
@@ -12,6 +14,12 @@ class SignUpScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final loc = AppLocalizations.of(context)!;
+    final supabase = Supabase.instance.client;
+    String username = '';
+    String email = '';
+    String password = '';
+    String confirmPassword = '';
+    final uuid = Uuid();
     return Scaffold(
       backgroundColor: AppColors.backgroundYellow,
       body: Stack(
@@ -49,27 +57,83 @@ class SignUpScreen extends StatelessWidget {
                     const SizedBox(height: 30),
 
                     CustomInputField(
+                      onChanged: (value) => {username = value},
                       hintText: loc.username,
                       icon: Icons.person_outline,
                     ),
                     CustomInputField(
+                      onChanged: (value) => {email = value},
                       hintText: loc.email,
                       icon: Icons.email_outlined,
                       keyboardType: TextInputType.emailAddress,
                     ),
                     CustomInputField(
+                      onChanged: (value) => {password = value},
                       hintText: loc.password,
                       icon: Icons.lock_outline,
                       isPassword: true,
                     ),
                     CustomInputField(
+                      onChanged: (value) => {confirmPassword = value},
                       hintText: loc.confirmPass,
                       icon: Icons.lock_outline,
                       isPassword: true,
                     ),
 
                     const SizedBox(height: 20),
-                    ActionButton(text: loc.createAccount, onPressed: () {}),
+                    ActionButton(
+                      text: loc.createAccount,
+                      onPressed: () async {
+                        if (password != confirmPassword) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text(loc.passwordDoNotMatch)),
+                          );
+                          return;
+                        } else {
+                          try {
+                            final usedUsername = await supabase
+                                .from('users') // tablo adı
+                                .select()
+                                .eq("username", username);
+                            if (usedUsername.isNotEmpty) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text(
+                                    'Kullanıcı adı zaten kullanılıyor. ',
+                                  ),
+                                ),
+                              );
+                              throw Exception('Username already in use');
+                            }
+
+                            final response = await supabase.auth.signUp(
+                              email: email.trim(),
+                              password: password,
+                            );
+
+                            final userId = response.user?.id;
+
+                            await supabase.from('users').insert({
+                              'id': userId,
+                              'username': username,
+                              'email': email,
+                            });
+                          } on AuthApiException catch (e) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(content: Text('${e.message}')),
+                            );
+                          } on AuthWeakPasswordException catch (e) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(content: Text('Zayıf şifre')),
+                            );
+                          } catch (e) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(content: Text('$e.message')),
+                            );
+                          }
+                        }
+                      },
+                    ),
 
                     const SizedBox(height: 20),
                     const Text("or", style: TextStyle(color: Colors.grey)),

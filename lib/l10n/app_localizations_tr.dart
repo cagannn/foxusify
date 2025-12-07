@@ -52,4 +52,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get profile => 'Profil';
+
+  @override
+  String get passwordDoNotMatch => 'Girilen şifreler eşleşmiyor';
 }

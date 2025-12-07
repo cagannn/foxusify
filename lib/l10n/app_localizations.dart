@@ -187,6 +187,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Profile'**
   String get profile;
+
+  /// No description provided for @passwordDoNotMatch.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm password havew to same as your password'**
+  String get passwordDoNotMatch;
 }
 
 class _AppLocalizationsDelegate

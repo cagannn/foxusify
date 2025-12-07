@@ -8,6 +8,7 @@ import '../../widgets/action_button.dart';
 import '../../widgets/social_login_section.dart';
 import '../signup_screen/signup_screen.dart';
 import '../../l10n/app_localizations.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -19,6 +20,7 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   String _email = '';
   String _password = '';
+  final supabase = Supabase.instance.client;
   @override
   Widget build(BuildContext context) {
     final loc = AppLocalizations.of(context)!;
@@ -59,11 +61,33 @@ class _LoginScreenState extends State<LoginScreen> {
           const SizedBox(height: 20),
           ActionButton(
             text: loc.login,
-            onPressed: () {
-              if (_email == "admin" && _password == "123") {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (_) => const MainScreen()),
+            onPressed: () async {
+              if (_email.isEmpty || _password.isEmpty) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: Text("Email ve şifre boş olamaz.")),
+                );
+                ();
+                return;
+              }
+              try {
+                final res = await supabase.auth.signInWithPassword(
+                  email: _email,
+                  password: _password,
+                );
+                final user = res.user;
+                if (user != null) {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (_) => MainScreen()),
+                  );
+                }
+              } on AuthApiException catch (e) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: Text("Şifre veya e-posta hatalı.")),
+                );
+              } catch (e) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: Text("Giriş başarısız: ${e.toString()}")),
                 );
               }
             },

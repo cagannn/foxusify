@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:foxusify/screens/profile_screen/profile_screen.dart';
 import '../../widgets/rounded_navbar.dart';
 
 class MainScreen extends StatefulWidget {
@@ -14,7 +15,7 @@ class _MainScreenState extends State<MainScreen> {
   final List<Widget> _pages = [
     const _SimplePage(title: 'Home Page'), // 0: Home
     const _SimplePage(title: 'Placement Page'), // 1: Placement
-    const _SimplePage(title: 'Profile Page'), // 2: Profile
+    ProfileScreen(), // 2: Profile
   ];
 
   @override
