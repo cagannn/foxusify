@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:foxusify/screens/main_screen/main_screen.dart';
-import '../../components/colors.dart';
-import '../../components/text_styles.dart';
-import '../../widgets/auth_template.dart';
-import '../../widgets/custom_input_field.dart';
-import '../../widgets/action_button.dart';
-import '../../widgets/social_login_section.dart';
+import 'package:foxusify/features/pomodoro/screens/main_screen/main_screen.dart';
+import '../../../../components/colors.dart';
+import '../../../../components/text_styles.dart';
+import '../../../../widgets/auth_template.dart';
+import '../../../../widgets/custom_input_field.dart';
+import '../../../../widgets/action_button.dart';
+import '../../../../widgets/social_login_section.dart';
 import '../signup_screen/signup_screen.dart';
-import '../../l10n/app_localizations.dart';
+import '../../../../l10n/app_localizations.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class LoginScreen extends StatefulWidget {
